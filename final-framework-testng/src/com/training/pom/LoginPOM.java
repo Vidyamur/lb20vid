@@ -13,14 +13,20 @@ public class LoginPOM {
 		PageFactory.initElements(driver, this);
 	}
 	
-	@FindBy(id="login")
+	//For RTTC_013 - RTTC_015
+	@FindBy(id="input-username")
 	private WebElement userName; 
 	
-	@FindBy(id="password")
+	@FindBy(id="input-password")
 	private WebElement password;
 	
-	@FindBy(id="formLogin_submitAuth")
+	@FindBy(tagName="button")
 	private WebElement loginBtn; 
+	
+	//@FindBy(id="menu-catalog")
+	
+	@FindBy(xpath="//ul[@id='menu']/li[@id='menu-catalog']/a[@class='parent']/i[@class='fa fa-tags fw']")
+	private WebElement catmen; 
 	
 	public void sendUserName(String userName) {
 		this.userName.clear();
@@ -31,8 +37,30 @@ public class LoginPOM {
 		this.password.clear(); 
 		this.password.sendKeys(password); 
 	}
+
+	public boolean LoginUser(String UserID,String Password)
+    {
+            try
+            {
+                    sendUserName(UserID);
+                    sendPassword(Password);
+                    clickLoginBtn();
+                    return true;
+                    
+            }
+            
+            catch(Exception ex)
+            {
+                    System.out.println(ex.getMessage());
+                    return false;
+            }
+    }
 	
 	public void clickLoginBtn() {
 		this.loginBtn.click(); 
+	}	
+		
+	public void clickCatBtn() {
+			this.catmen.click(); 	
 	}
 }

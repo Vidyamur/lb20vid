@@ -34,6 +34,7 @@ public class LoginTests {
 	public void setUp() throws Exception {
 		driver = DriverFactory.getDriver(DriverNames.CHROME);
 		loginPOM = new LoginPOM(driver); 
+		
 		baseUrl = properties.getProperty("baseURL");
 		screenShot = new ScreenShot(driver); 
 		// open the browser 
@@ -47,9 +48,22 @@ public class LoginTests {
 	}
 	@Test
 	public void validLoginTest() {
-		loginPOM.sendUserName("admin");
+	/*	loginPOM.sendUserName("admin");
 		loginPOM.sendPassword("admin@123");
 		loginPOM.clickLoginBtn(); 
+		loginPOM.clickCatBtn(); */
+		
+       Boolean flag = loginPOM.LoginUser("admin","admin@123");
+		
+		if(flag)
+		{
+			System.out.println("login successful");
+		}
+		else
+		{
+			System.out.println("login unsuccessful");
+		}
+		
 		screenShot.captureScreenShot("First");
 	}
 }
