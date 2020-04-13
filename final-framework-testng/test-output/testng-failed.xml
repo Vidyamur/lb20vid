@@ -6,4 +6,16 @@
       <class name="com.training.sanity.tests.ProductFilterDelete"/>
     </classes>
   </test> <!-- Default test -->
+  <test name="Default test(failed)">
+    <classes>
+      <class name="com.training.sanity.tests.ProductFilterDelete">
+        <methods>
+          <include name="setUpBeforeClass"/>
+          <include name="toEditProdQuantity"/>
+          <include name="tearDown"/>
+          <include name="setUp"/>
+        </methods>
+      </class> <!-- com.training.sanity.tests.ProductFilterDelete -->
+    </classes>
+  </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
